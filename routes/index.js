@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var notes = require('../models/notes-memory')
+const express = require('express');
+const router = express.Router();
+const notes = require('../models/notes-memory')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   notes.keylist()
     .then(keylist => {
-      var keyPromises = [];
-      for (var key of keylist) {
+      let keyPromises = [];
+      for (let key of keylist) {
         keyPromises.push(
           notes.read(key)
             .then(note => {
