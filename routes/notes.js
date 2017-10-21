@@ -51,4 +51,12 @@ router.get('/view', (req, res, next) => {
     .catch(err => { next(err); });
 });
 
+router.get('/destroy', (req, res, next) => {
+  notes.destroy(req.query.key)
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch(err => { next(err); });
+});
+
 module.exports = router;
