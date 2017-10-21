@@ -14,6 +14,18 @@ router.get('/add', (req, res, next) => {
   });
 });
 
+router.get('/edit', (req, res, next) => {
+  notes.read(req.query.key)
+    .then(note => {
+      res.render('noteedit', {
+        title: note ? 'Edit ' + note.title : 'Add a note',
+        docreate: false,
+        notekey: req.query.key,
+        note: note
+      });
+    }).catch(err => { next(err); });
+});
+
 router.post('/save', (req, res, next) => {
   let p;
   if (req.body.docreate === 'create') {
