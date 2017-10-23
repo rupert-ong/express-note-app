@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "set DEBUG=notes:* & nodemon ./bin/www"
+    "start": "set DEBUG=notes:* & nodemon ./bin/www",
+    "server1": "set DEBUG=notes:* & set PORT=3001 & nodemon ./bin/www",
+    "server2": "set DEBUG=notes:* & set PORT=3002 & nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
