@@ -4,24 +4,35 @@
   <% include headerStuff %>
 </head>
 <body>
-  <% include pageHeader %>
-    <form method="post" action="/notes/save">
-      <input type="hidden" name="docreate" value="<%= docreate ? 'create' : 'update' %>">
-      <p>
-        Key: 
-        <% if (docreate) { %>
-          <input type="text" name="notekey" value="" />
-        <% } else { %>
-          <input type="hidden" name="notekey" value="<%= note ? notekey : '' %>" />
-        <% } %>
-      </p>
-      <p>
-        Title: 
-        <input type="text" name="title" value="<%= note ? note.title : '' %>">
-      </p>
-      <textarea name="body" cols="40" rows="5"><%= note ? note.body : '' %></textarea>
-      <br><input type="submit" value="Submit" />
-    </form>
+  <div class="container-fluid">
+    <% include pageHeader %>
+    <div class="row">
+      <div class="col-xs-12">
+        <form method="post" action="/notes/save">
+          <input type="hidden" name="docreate" value="<%= docreate ? 'create' : 'update' %>">
+          <div class="form-group">
+            <% if (docreate) { %>
+              <label for="notekey">Key</label>
+              <input type="text" class="form-control" name="notekey" placeholder="Note key" value="" />
+            <% } else { %>
+              <input type="hidden" class="form-control" name="notekey" value="<%= note ? notekey : '' %>" />
+            <% } %>
+          </div>
+         
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Note title" value="<%= note ? note.title : '' %>">
+          </div>
+  
+          <div class="form-group">
+            <label for="body">Description</label>
+            <textarea name="body" class="form-control" cols="40" rows="5"><%= note ? note.body : '' %></textarea>
+          </div>
+          <button type="submit" class="btn btn-default"><%= docreate ? 'Add' : 'Edit' %> Note</button>
+        </form>
+      </div>
+    </div>
     <% include footer %>
+  </div>
 </body>
 </html>

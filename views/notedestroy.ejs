@@ -4,13 +4,14 @@
   <% include headerStuff %>
 </head>
 <body>
-  <% include pageHeader %>
-  <form method="post" action="/notes/destroy/confirm">
-    <input type="hidden" name="notekey" value="<%= note ? notekey : '' %>">
-    <p>Delete <%= title %>?</p>
-    <br/>
-    <input type="submit" value="Delete"> <a href="/notes/view?key=<%= notekey %>">Cancel</a>
-  </form>
-  <% include footer %>
+  <div class="container-fluid">
+    <% include pageHeader %>
+    <form method="post" action="/notes/destroy/confirm">
+      <input type="hidden" name="notekey" value="<%= note ? notekey : '' %>">
+      <h3>Delete <%= title %>?</h3>
+      <input type="submit" class="btn btn-primary" value="Delete"> <a href="/notes/view?key=<%= notekey %>" class="btn btn-default">Cancel</a>
+    </form>
+    <% include footer %>
+  </div>
 </body>
 </html>
