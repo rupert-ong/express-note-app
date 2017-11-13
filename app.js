@@ -10,6 +10,12 @@ const routes = require('./routes/index');
 // const users = require('./routes/users');
 const notes = require('./routes/notes');
 
+// logging uncaught exceptions
+const error = require('debug')('notes:error');
+process.on('uncaughtException', err => {
+  error('Crash occurred: ' + err.stack || err);
+});
+
 const app = express();
 
 // Archive log file periodically if env var specified
@@ -54,7 +60,7 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+  // set locals, only providing error/stacktrace in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
