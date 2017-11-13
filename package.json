@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "startLog": "set REQUEST_LOG_FORMAT=common& set REQUEST_LOG_FILE=access.log& nodemon ./bin/www",
-    "startDebug": "set DEBUG=notes:* & nodemon ./bin/www", 
+    "startDebug": "set DEBUG=notes:* & nodemon ./bin/www",
     "server1": "set DEBUG=notes:* & set PORT=3001 & nodemon ./bin/www",
     "server2": "set DEBUG=notes:* & set PORT=3002 & nodemon ./bin/www"
   },
@@ -16,6 +16,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "fs-extra": "^4.0.2",
     "jquery": "^3.2.1",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
